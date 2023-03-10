@@ -16,8 +16,10 @@ def calc_code_bleu(ref, hyp, lang, keywords_dir):
     else:
         hypothesis = hyp
     
+    num_hypothesis = len(hypothesis)
     for i in range(len(pre_references)):
-        assert len(hypothesis) == len(pre_references[i])
+        pre_references[i] = pre_references[i][:num_hypothesis]
+#         assert len(hypothesis) == len(pre_references[i])
 
     references = []
     for i in range(len(hypothesis)):
@@ -59,16 +61,20 @@ def calc_code_bleu(ref, hyp, lang, keywords_dir):
 
 def calc_code_bleu_multilang(ref, hyp, langs, keywords_dir):
     
-    pre_references = [[x.strip() for x in open(ref, 'r', encoding='utf-8').readlines()]]
-    hypothesis = [x.strip() for x in open(hyp, 'r', encoding='utf-8').readlines()]
+    pre_references = [[x.replace('<NEWLINE>','\n').strip() for x in open(ref, 'r', encoding='utf-8').readlines()]]
+    hypothesis = [x.replace('<NEWLINE>','\n').strip() for x in open(hyp, 'r', encoding='utf-8').readlines()]
+    
+    pre_references[0] += ['']*(len(langs)-len(pre_references[0]))
+    hypothesis += ['']*(len(langs)-len(hypothesis))
     
     ret = {}
     lang_set = set(langs)
     for lang in lang_set:
         ind = [i for i in range(len(langs)) if langs[i]==lang]
-        ret[lang] = calc_code_bleu([[pre_references[0][i] for i in ind]], \
-                                   [hypothesis[i] for i in ind], \
-                                   lang, keywords_dir)
+        if len(ind)>0:
+            ret[lang] = calc_code_bleu([[pre_references[0][i] for i in ind]], \
+                                       [hypothesis[i] for i in ind], \
+                                       lang, keywords_dir)
     return ret
     
     
