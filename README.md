@@ -18,7 +18,11 @@ mkdir -p saved_models/pretrain/ <br>
 Download the pretrained model weights from [here](https://drive.google.com/drive/folders/1cyvtmZjaLc1OwlnU0_N_GwC_eAs5snf9?usp=sharing) and place it under saved_models/pretrain/checkpoint-12000/
 
 ## Training commands:
-
+Pretraining: python pretrain_main.py <br>
+Java-C# translation: python finetune_translation_main.py --source_lang java --target_lang cs <br>
+C#-Java translation: python finetune_translation_main.py --source_lang cs --target_lang java <br>
+Concode: python finetune_generation_main.py <br>
+APPS: python finetune_apps_main.py
 
 ## Citation
 If you find the paper or this repo useful, please cite
