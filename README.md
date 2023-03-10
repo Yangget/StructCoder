@@ -32,10 +32,10 @@ All datasets are loaded from Huggingface's Datasets library except for concode w
 
 Run the cells in pretrain_preprocess.ipynb and finetune_preprocess.ipynb. This should create a folder data/ with subfolders for each dataset used for experiments. You can skip pretrain_preprocess.ipynb if you choose to run our finetuning codes with the provided pretrained checkpoint. 
 
-## Download pretrained checkpoint:
+## Download pretrained checkpoint
 Download the pretrained model weights from [here](https://drive.google.com/drive/folders/1cyvtmZjaLc1OwlnU0_N_GwC_eAs5snf9?usp=sharing) and place it under saved_models/pretrain/.
 
-## Training commands:
+## Training commands
 #### Pretraining: 
 
     python pretrain_main.py 
