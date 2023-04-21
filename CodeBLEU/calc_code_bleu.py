@@ -1,8 +1,8 @@
 import argparse
-import bleu2
-import weighted_ngram_match
-import syntax_match
-import dataflow_match
+import StructCoder.CodeBLEU.bleu2
+import StructCoder.CodeBLEU.weighted_ngram_match
+import StructCoder.CodeBLEU.syntax_match
+import StructCoder.CodeBLEU.dataflow_match
 import os
 
 def calc_code_bleu(ref, hyp, lang, keywords_dir):
