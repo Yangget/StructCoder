@@ -15,7 +15,7 @@ from sklearn.metrics import average_precision_score
 from bleu import _bleu
 import sys
 sys.path.append('CodeBLEU')
-from calc_code_bleu import calc_code_bleu, calc_code_bleu_multilang
+from StructCoder.CodeBLEU.calc_code_bleu import calc_code_bleu, calc_code_bleu_multilang
 tqdm.pandas()
 
 
